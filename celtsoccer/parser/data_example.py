@@ -8,6 +8,7 @@
 # Value -> nested dictionary, where:
 #            Key -> name of the player
 #          Value -> list with values for each player
+
 fake_soccer_data = {
     'Argentina': {
         'Lionel Messi': ['FW', '35-177', 'Paris S-G', 1987, 7, 7, 690, 7.7, 7, 3, 3, 1, 0],

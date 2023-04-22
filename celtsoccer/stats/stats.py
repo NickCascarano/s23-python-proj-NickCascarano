@@ -3,36 +3,50 @@
 This module computes some statistics from the text corpus.
 You have to implement these functions.
 """
-
+import celtsoccer
 
 # Finds the club with the highest number of players and returns a tuple,
 # with the name of the club and the total number of minutes played by the
 # players of that club.
-def most_common_club(data):
-    print('Stats module computing -> most_common_club: ', end='')
 
-    total_minutes_played = 0
-    club = ''
 
-    # your code goes here
+################################################################ Finished Below
+def most_common_club(primary_data, club_country_data):
+    club_minutes = {}
+    for club in club_country_data:
+        total_minutes = 0
+        for country in club_country_data[club]:
+            for player in club_country_data[club][country]:
+                player_data = primary_data[country][player]
+                total_minutes += player_data[6]
+        club_minutes[club] = total_minutes
 
-    return (club, total_minutes_played)
+    max_minutes = None
+    max_club = None
+    for club, minutes in club_minutes.items():
+        if max_minutes is None or minutes > max_minutes:
+            max_minutes = minutes
+            max_club = club
+
+    return (max_club, max_minutes)
+################################################################# Finished Above
 
 
 # Finds the top scorer for a given country, returns a tuple with the name
 # of the player and the number of goals scorer. If there are more than
 # one player with the same number of goals, returns the one at the top alphabetically.
-def get_top_scorer(data, country):
-    print('Stats module computing -> get_top_scorer: ', end='')
-
-    goals_scored = 0
-    country = ''
-
-    # your code goes here
-
-    return (country, goals_scored)
-
-
+################################################################## Working Below
+def top_scorer(data, countries):
+    top_scorer = ('', 0)
+    for country in countries:
+        for player, player_data in data[country].items():
+            if player_data[9] > top_scorer[1]:
+                top_scorer = (player, player_data[9])
+            elif player_data[9] == top_scorer[2]:
+                if player < top_scorer[0]:
+                    top_scorer = (player, player_data[9])
+    return top_scorer
+################################################################## Working Above
 # Computes the average goals scored for players of a given club.
 # The average is the sum of goals for players for that club,
 # divided by the number of players of that club who scored goals

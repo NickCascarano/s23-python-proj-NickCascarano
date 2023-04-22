@@ -17,7 +17,7 @@ display_plots = 0
 #   4 is for the dataset_larger.csv (32 countries, 680 players)
 # To test your script with a different dataset change the value of this
 # variable, by default use 1, which corresponds to fake_data.csv file
-which_dataset = 1
+which_dataset = 3
 
 datasets = {
     1: 'fake_data.csv',
@@ -76,6 +76,7 @@ print('There are ', len(soccer_data), ' countries in the dataset!')
 # Also, you don't have to read again the data from the file. It has
 # already loaded and stored in the variable soccer_data
 
+
 print('******* Position Data *******')
 position_data = parser.build_position_data(soccer_data)
 pprint.pprint(position_data, width=50, compact=False, sort_dicts=False)
@@ -104,6 +105,9 @@ print('******* Starts Player Data *******')
 start_player_data = parser.build_start_player_data(soccer_data)
 pprint.pprint(start_player_data, width=150, compact=False, sort_dicts=False)
 
+print('******* Country List *******')
+country_list = parser.build_country_list(soccer_data)
+print(country_list)
 
 if display_plots == 1:
     # Implementing the functions below is optional and a bonus for the project
