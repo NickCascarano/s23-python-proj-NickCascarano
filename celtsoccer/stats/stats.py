@@ -37,29 +37,26 @@ def most_common_club(primary_data, club_country_data):
 # one player with the same number of goals, returns the one at the top alphabetically.
 ################################################################## Working Below
 def top_scorer(data, countries):
-    top_scorer = ('', 0)
-    for country in countries:
-        for player, player_data in data[country].items():
-            if player_data[9] > top_scorer[1]:
-                top_scorer = (player, player_data[9])
-            elif player_data[9] == top_scorer[2]:
-                if player < top_scorer[0]:
-                    top_scorer = (player, player_data[9])
-    return top_scorer
+
+
+    return (data, countries)
+
 ################################################################## Working Above
 # Computes the average goals scored for players of a given club.
 # The average is the sum of goals for players for that club,
 # divided by the number of players of that club who scored goals
 # (don't count players who didn't score).
-def avg_goals_scored(data, club):
-    print('Stats module computing -> avg_goals_scored: ' + club + ': ',  end='')
 
-    club_avg_goals_scored = 0
-    club = ''
+#def avg_goals_scored(data, club):
+##    print('Stats module computing -> avg_goals_scored: ' + club + ': ',  end='')
 
-    # your code goes here
+#    club_avg_goals_scored =
+#    club = ''
 
-    return (club, club_avg_goals_scored)
+#    for country in data.items():
+#    # your code goes here
+
+#    return (club, club_avg_goals_scored)
 
 
 # Returns a list with tuples, in which each entry is a pair (player, minutes played)
@@ -118,4 +115,5 @@ def compute_cards_per_country(data, color='y'):
     # your code goes here
 
     return countries_total_cards
+
 

@@ -64,6 +64,44 @@ def plot_top_k_scorer_club(soccer_data, club, k):
 
     # your code goes here
 
+    # Extract the player data for the given club
+    club_players = {}
+    for player in soccer_data:
+        if player[1] == club:
+            club_players[player[0]] = player[8]
+
+    # Sort the players by goals scored, and alphabetically for ties
+    sorted_players = sorted(club_players.items(), key=lambda x: (-x[1], x[0]))
+
+    # Create the turtle screen and set the coordinates
+    screen = turtle.Screen()
+    screen.setworldcoordinates(0, 0, 10, k+1)
+
+    # Create the turtle and set its properties
+    t = turtle.Turtle()
+    t.speed(0)
+    t.penup()
+    t.goto(0, k+1)
+    t.pendown()
+
+    # Plot each player's goals scored
+    for i, player in enumerate(sorted_players[:k]):
+        name, goals = player
+        t.write(f"{name}: {goals}", font=("Arial", 12, "normal"))
+        t.right(90)
+        t.forward(0.5)
+        t.left(90)
+        t.forward(goals)
+
+    # Hide the turtle and exit on click
+    t.hideturtle()
+    turtle.exitonclick()
+
+    try:
+        turtle.update()
+    except turtle.Terminator:
+        pass
+
 
 # plots the counts of goals scored by the top k players of a given country, where k is a number between 1 and 5.
 # For example if you pass 3, the plot includes the top 3 scorers
