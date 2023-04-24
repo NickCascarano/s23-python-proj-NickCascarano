@@ -57,7 +57,7 @@ def top_scorer(data): #this function works, done
 # divided by the number of players of that club who scored goals
 # (don't count players who didn't score).
 def avg_goals_scored(data):
-  print('Stats module computing -> avg_goals_scored: ' + club_name + ': ',  end='')
+
   club_dict = {}
   for country, player in data.items():
     for player_name, player_data in player.items():
@@ -84,9 +84,11 @@ def avg_goals_scored(data):
 def get_players_club_begin(data, letter):
     print('Stats module computing -> get_players_club_begin: ' + letter + ': ', end='')
     players = []
-
-    # your code goes here
-
+    for country, player in data.items():
+      for player_name, player_data in player.items():
+        first_letter_of_club  = player_data[2][0]
+        if letter == first_letter_of_club:
+          players.append((player_name, player_data[7]))
     return players
 
 
@@ -95,9 +97,11 @@ def get_players_club_begin(data, letter):
 def get_players_name_begin(data, letter):
     print('Stats module computing -> get_players_name_begin: ' + letter + ': ', end='')
     players = []
-
-    # your code goes here
-
+    for country, player in data.items():
+      for player_name, player_data in player.items():
+        player_first_letter = player_name[0]
+        if player_first_letter == letter:
+          players.append((player_name, player_data[6]))
     return players
 
 
@@ -106,9 +110,12 @@ def get_players_name_begin(data, letter):
 def get_players_minutes_played(data, limit):
     print('Stats module computing -> get_players_minutes_played: ' + str(limit) + ': ', end='')
     players = []
-
-    # your code goes here
-
+    #7
+    for country, player in data.items():
+      for player_name, player_data in player.items():
+        minutes_played = player_data[6]
+        if minutes_played < limit:
+          players.append((player_name, minutes_played))
     return players
 
 
@@ -118,7 +125,11 @@ def compute_avg_goals_countries(data):
     print('Stats module computing -> compute_avg_goals_countries: ', end='')
     countries_avg_goals = []
 
-    # your code goes here
+    for country, player in data.items():
+      running_total = 0
+      for player_name, player_data in player.items():
+          running_total += player_data[8]
+      countries_avg_goals.append((country, round((running_total / 3),2)))
 
     return countries_avg_goals
 
@@ -130,8 +141,17 @@ def compute_avg_goals_countries(data):
 def compute_cards_per_country(data, color='y'):
     print('Stats module computing -> compute_cards_per_country: ', end='')
     countries_total_cards = []
-
-    # your code goes here
-
+    running_total = 0
+    for country, player in data.items():
+      for player_name, player_data in player.items():
+        if color == 'r':
+          cards = player_data[12]
+        elif color == 'y':
+          cards = player_data[11]
+        else:
+          print('Please Input a Valid Card Color')
+        running_total += cards
+      countries_total_cards.append((country, running_total))
+      running_total = 0
     return countries_total_cards
 
