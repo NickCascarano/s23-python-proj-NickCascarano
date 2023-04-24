@@ -17,7 +17,7 @@ display_plots = 0
 #   4 is for the dataset_larger.csv (32 countries, 680 players)
 # To test your script with a different dataset change the value of this
 # variable, by default use 1, which corresponds to fake_data.csv file
-which_dataset = 3
+which_dataset = 1
 
 datasets = {
     1: 'fake_data.csv',
