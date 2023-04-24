@@ -36,30 +36,46 @@ def most_common_club(primary_data, club_country_data):
 # of the player and the number of goals scorer. If there are more than
 # one player with the same number of goals, returns the one at the top alphabetically.
 ################################################################## Working Below
-def top_scorer(data, countries):
-    top_scorer = ('', 0)
-    for country in countries:
-        for player, player_data in data[country].items():
-            if player_data[9] > top_scorer[1]:
-                top_scorer = (player, player_data[9])
-            elif player_data[9] == top_scorer[2]:
-                if player < top_scorer[0]:
-                    top_scorer = (player, player_data[9])
-    return top_scorer
+def top_scorer(data): #this function works, done
+    top_scorers_dict = {}
+    for country, players in data.items():
+        top_scorer_name = ''
+        top_scorer_goals = 0
+        for player_name, player_stats in players.items():
+            player_goals = player_stats[8]
+            if player_goals > top_scorer_goals:
+                top_scorer_name = player_name
+                top_scorer_goals = player_goals
+            elif player_goals == top_scorer_goals and player_name < top_scorer_name:
+                top_scorer_name = player_name
+                top_scorer_goals = player_goals
+        top_scorers_dict[country] = (top_scorer_name, top_scorer_goals)
+    return top_scorers_dict
 ################################################################## Working Above
 # Computes the average goals scored for players of a given club.
 # The average is the sum of goals for players for that club,
 # divided by the number of players of that club who scored goals
 # (don't count players who didn't score).
-def avg_goals_scored(data, club):
-    print('Stats module computing -> avg_goals_scored: ' + club + ': ',  end='')
+def avg_goals_scored(data):
+  print('Stats module computing -> avg_goals_scored: ' + club_name + ': ',  end='')
+  club_dict = {}
+  for country, player in data.items():
+    for player_name, player_data in player.items():
+      player_club_name = player_data[2]
+      player_goals_scored = player_data[8]
+      if player_club_name not in club_dict:
+        club_dict[player_club_name] = [player_goals_scored, 1]
+      else:
+        club_dict[player_club_name][0] += player_goals_scored
+        club_dict[player_club_name][1] += 1
 
-    club_avg_goals_scored = 0
-    club = ''
-
-    # your code goes here
-
-    return (club, club_avg_goals_scored)
+  result = {}
+  for club_name, goals_count in club_dict.items():
+    goals_scored = goals_count[0]
+    player_count = goals_count[1]
+    if player_count > 0:
+      result[club_name] = goals_scored / player_count
+  return result
 
 
 # Returns a list with tuples, in which each entry is a pair (player, minutes played)
