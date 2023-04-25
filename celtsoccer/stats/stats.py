@@ -57,7 +57,7 @@ def top_scorer(data): #this function works, done
 # divided by the number of players of that club who scored goals
 # (don't count players who didn't score).
 def avg_goals_scored(data):
-  print('Stats module computing -> avg_goals_scored: ' + club_name + ': ',  end='')
+  print('Stats module computing -> avg_goals_scored for all clubs.\n')
   club_dict = {}
   for country, player in data.items():
     for player_name, player_data in player.items():
@@ -81,6 +81,7 @@ def avg_goals_scored(data):
 # Returns a list with tuples, in which each entry is a pair (player, minutes played)
 # but including only those players whose club name starts with the letter passed
 # as argument letter.
+
 def get_players_club_begin(data, letter):
     print('Stats module computing -> get_players_club_begin: ' + letter + ': ', end='')
     players = []

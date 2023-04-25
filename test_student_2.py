@@ -19,7 +19,7 @@ from test_student_1 import country_list
 # script.
 
 # change this value to 1 for displaying the viz plots
-display_plots = 1
+display_plots = 0
 
 print('***************************************************')
 print('building dictionaries')
@@ -44,14 +44,11 @@ pprint.pprint('Computing some stats and printing the results')
 result = stats.most_common_club(soccer_data, club_country_data)
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-#result = stats.top_scorer(soccer_data, country_list)
-#pprint.pprint(result, width=150, compact=False, sort_dicts=False)
+result = stats.top_scorer(soccer_data)
+pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-#result = stats.avg_goals_scored(parser.fake_soccer_data, 'Juventus')
-#pprint.pprint(result, width=150, compact=False, sort_dicts=False)
-
-#result = stats.avg_goals_scored(parser.fake_soccer_data, 'Juventus')
-#pprint.pprint(result, width=150, compact=False, sort_dicts=False)
+result = stats.avg_goals_scored(soccer_data)
+pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
 result = stats.get_players_club_begin(parser.fake_soccer_data, 'C')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
