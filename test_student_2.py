@@ -50,22 +50,22 @@ pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 result = stats.avg_goals_scored(soccer_data)
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.get_players_club_begin(parser.fake_soccer_data, 'C')
+result = stats.get_players_club_begin(soccer_data, 'A')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.get_players_name_begin(parser.fake_soccer_data, 'M')
+result = stats.get_players_name_begin(soccer_data, 'A')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.get_players_minutes_played(parser.fake_soccer_data, 325)
+result = stats.get_players_minutes_played(soccer_data, 325)
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.compute_avg_goals_countries(parser.fake_soccer_data)
+result = stats.compute_avg_goals_countries(soccer_data)
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.compute_cards_per_country(parser.fake_soccer_data, color='y')
+result = stats.compute_cards_per_country(soccer_data, color='y')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.compute_cards_per_country(parser.fake_soccer_data, color='r')
+result = stats.compute_cards_per_country(soccer_data, color='r')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
 if display_plots == 1:
