@@ -55,7 +55,7 @@ def build_goals_score_data(data):
     goals_score_data = {}
     for country, players in data.items():
         for player, player_data in players.items():
-            player_goals = player_data[9]
+            player_goals = player_data[8]
             if player_goals not in goals_score_data:
                 goals_score_data[player_goals] = []
             if player not in goals_score_data[player_goals]:
