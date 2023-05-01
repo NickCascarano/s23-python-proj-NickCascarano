@@ -5,6 +5,7 @@ import celtsoccer.stats as stats
 import celtsoccer.parser as parser
 import celtsoccer.viz as viz
 import pprint
+from test_student_1 import soccer_data
 from test_student_1 import position_data
 from test_student_1 import roster_data
 from test_student_1 import goals_score_data
@@ -12,7 +13,6 @@ from test_student_1 import country_club_data
 from test_student_1 import club_country_data
 from test_student_1 import year_player_data
 from test_student_1 import start_player_data
-from test_student_1 import soccer_data
 from test_student_1 import country_list
 
 # The student working on the stats (computing statistics) should modify this
@@ -44,10 +44,10 @@ pprint.pprint('Computing some stats and printing the results')
 result = stats.most_common_club(soccer_data, club_country_data)
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.top_scorer(soccer_data)
+result = stats.top_scorer(soccer_data, 'Argentina')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.avg_goals_scored(soccer_data)
+result = stats.avg_goals_scored(soccer_data, 'Brighton')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
 result = stats.get_players_club_begin(soccer_data, 'A')
