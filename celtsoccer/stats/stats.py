@@ -66,7 +66,10 @@ def avg_goals_scored(data, club=''):
         if player_data[8] > 0:
           running_total += player_data[8]
           count += 1
-  return (club, round((running_total / count),2))
+  rtrn = count
+  if count != 0:
+      rtrn = round((running_total / count), 2)
+  return (club, rtrn)
 
 
 # Returns a list with tuples, in which each entry is a pair (player, minutes played)
