@@ -38,20 +38,14 @@ def most_common_club(primary_data, club_country_data):
 # one player with the same number of goals, returns the one at the top alphabetically.
 ################################################################## Working Below
 def top_scorer(data, country=''):
-  local_max = 0
-  for country_name, player in data.items():
-    if country_name == country:
-      for player_name, player_data in player.items():
-        goals_scored = player_data[8]
-        if goals_scored > local_max:
-          result = (player_name, goals_scored)
-          local_max = goals_scored
-        elif goals_scored < local_max:
-          continue
-        elif goals_scored == local_max:
-          if player_name < result[0]:
-            result = (player_name, goals_scored)
-  return result
+    top_scorer = None
+    for player, stats in data[country].items():
+        goals = stats[8]
+        if top_scorer is None or goals > top_scorer[1]:
+            top_scorer = (player, goals)
+        elif goals == top_scorer[1] and player < top_scorer[0]:
+            top_scorer = (player, goals)
+    return top_scorer
 ################################################################## Working Above
 # Computes the average goals scored for players of a given club.
 # The average is the sum of goals for players for that club,
@@ -82,9 +76,8 @@ def get_players_club_begin(data, letter):
       for player_name, player_data in player.items():
         first_letter_of_club  = player_data[2][0]
         if letter == first_letter_of_club:
-          players.append((player_name, player_data[7]))
+          players.append((player_name, player_data[6]))
     return players
-
 
 # Returns a list with tuples, in which each entry is a pair (player, minutes played)
 # but including only those players whose name starts with the letter passed as argument letter.

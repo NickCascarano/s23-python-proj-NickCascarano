@@ -41,30 +41,39 @@ print('***************************************************')
 # the dictionaries are empty
 
 pprint.pprint('Computing some stats and printing the results')
+pprint.pprint('Most Common Club') # Works
 result = stats.most_common_club(soccer_data, club_country_data)
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.top_scorer(soccer_data, 'Argentina')
+pprint.pprint('Top Scorer, Argentina') #Finished Edge Case Testing
+result = stats.top_scorer(soccer_data, 'France')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.avg_goals_scored(soccer_data, 'Brighton')
+pprint.pprint('Average Goals, Juventus') #Data validation done
+result = stats.avg_goals_scored(soccer_data, 'Paris S-G')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.get_players_club_begin(soccer_data, 'A')
+pprint.pprint('Computing some stats and printing the results') #Works
+result = stats.get_players_club_begin(soccer_data, 'K')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
+pprint.pprint('Players Name Begin, C') # Works
 result = stats.get_players_name_begin(soccer_data, 'A')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
-result = stats.get_players_minutes_played(soccer_data, 325)
+pprint.pprint('Players Minutes Played, 300') # Works
+result = stats.get_players_minutes_played(soccer_data, 300)
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
+pprint.pprint('Average Goals Countries') # Done
 result = stats.compute_avg_goals_countries(soccer_data)
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
+pprint.pprint('Cards per Country Y') # Done
 result = stats.compute_cards_per_country(soccer_data, color='y')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
+pprint.pprint('Cards per Country R') # Done
 result = stats.compute_cards_per_country(soccer_data, color='r')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
