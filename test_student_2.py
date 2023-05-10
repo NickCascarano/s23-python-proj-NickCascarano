@@ -5,16 +5,7 @@ import celtsoccer.stats as stats
 import celtsoccer.parser as parser
 import celtsoccer.viz as viz
 import pprint
-from test_student_1 import soccer_data
-from test_student_1 import position_data
-from test_student_1 import roster_data
-from test_student_1 import goals_score_data
-from test_student_1 import country_club_data
-from test_student_1 import club_country_data
-from test_student_1 import year_player_data
-from test_student_1 import start_player_data
-from test_student_1 import country_list
-
+from test_student_1 import *
 # The student working on the stats (computing statistics) should modify this
 # script.
 
@@ -54,11 +45,11 @@ result = stats.avg_goals_scored(soccer_data, 'Paris S-G')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
 pprint.pprint('Computing some stats and printing the results') #Works
-result = stats.get_players_club_begin(soccer_data, 'K')
+result = stats.get_players_club_begin(soccer_data, 'D')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
 pprint.pprint('Players Name Begin, C') # Works
-result = stats.get_players_name_begin(soccer_data, 'A')
+result = stats.get_players_name_begin(soccer_data, 'C')
 pprint.pprint(result, width=150, compact=False, sort_dicts=False)
 
 pprint.pprint('Players Minutes Played, 300') # Works

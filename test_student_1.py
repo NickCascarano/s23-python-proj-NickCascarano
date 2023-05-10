@@ -118,12 +118,12 @@ if display_plots == 1:
 
     # Plots the top 3 scorers for team 'Paris S-G', uses fake data
     # just to illustrate how the viz module works
-    viz.plot_top_k_fake_items_doc(parser.fake_top_scorers, 'Paris S-G', 4)
+    #viz.plot_top_k_fake_items_doc(parser.fake_top_scorers, 'Paris S-G', 4)
 
     # Plots the counts of goals scored by the top k players of a given club,
     # where k is a number between 1 and 5. For example if you pass 3,
     # the plot includes the top 3 scorers.
-    # viz.plot_top_k_scorer_club(soccer_data, 'Juventus', 3)
+    viz.plot_top_k_scorer_club(soccer_data, 'Argentina', 3)
 
     # plots the counts of goals scored by the top k players of a given country,
     # where k is a number between 1 and 5. For example if you pass 3, the plot

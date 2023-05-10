@@ -59,59 +59,64 @@ def plot_top_k_fake_items_doc(data, item, k):
 
 # plots the counts of goals scored by the top k players of a given club, where k is a number between 1 and 5.
 # For example if you pass 3, the plot includes the top 3 scorers.
-def plot_top_k_scorer_club(soccer_data, club, k):
-    print('plot_top_k_scorer_club: ')
 
-    # your code goes here
+def plot_top_k_scorer_club(data, club, k):
+    # get the top k players and their goal counts for the specified club
+    players = data[club]
+    top_k = sorted(players.items(), key=lambda x: x[1][-1], reverse=True)[:k]
+    top_k_names = [player[0] for player in top_k]
+    top_k_goals = [player[1][-1] for player in top_k]
 
-    # Extract the player data for the given club
-    club_players = {}
-    for player in soccer_data:
-        if player[1] == club:
-            club_players[player[0]] = player[8]
+    # create the turtle window and set up the coordinate system
+    window = turtle.Screen()
+    window.setworldcoordinates(-1, -5, k, max(top_k_goals) + 5)
+    window.bgcolor("white")
 
-    # Sort the players by goals scored, and alphabetically for ties
-    sorted_players = sorted(club_players.items(), key=lambda x: (-x[1], x[0]))
+    # create the turtle for drawing the bars
+    bar_turtle = turtle.Turtle()
+    bar_turtle.speed(0)
+    bar_turtle.penup()
 
-    # Create the turtle screen and set the coordinates
-    screen = turtle.Screen()
-    screen.setworldcoordinates(0, 0, 10, k+1)
+    # create the turtle for drawing the x-axis labels
+    label_turtle = turtle.Turtle()
+    label_turtle.speed(0)
+    label_turtle.penup()
 
-    # Create the turtle and set its properties
-    t = turtle.Turtle()
-    t.speed(0)
-    t.penup()
-    t.goto(0, k+1)
-    t.pendown()
+    # draw the bars and labels
+    for i in range(len(top_k)):
+        bar_turtle.goto(i + 0.5, 0)
+        bar_turtle.pendown()
+        bar_turtle.setheading(90)
+        bar_turtle.begin_fill()
+        bar_turtle.forward(top_k_goals[i])
+        bar_turtle.color("black")
+        bar_turtle.write(str(top_k_goals[i]), align="center", font=("Arial", 10, "normal"))
+        bar_turtle.right(90)
+        bar_turtle.forward(0.5)
+        bar_turtle.right(90)
+        bar_turtle.forward(top_k_goals[i])
+        bar_turtle.end_fill()
+        bar_turtle.penup()
+        label_turtle.goto(i + 0.5, -3)
+        label_turtle.write(top_k_names[i], align="center", font=("Arial", 10, "normal"))
 
-    # Plot each player's goals scored
-    for i, player in enumerate(sorted_players[:k]):
-        name, goals = player
-        t.write(f"{name}: {goals}", font=("Arial", 12, "normal"))
-        t.right(90)
-        t.forward(0.5)
-        t.left(90)
-        t.forward(goals)
+    # draw the x-axis
+    bar_turtle.goto(-0.5, 0)
+    bar_turtle.pendown()
+    bar_turtle.forward(k)
+    bar_turtle.penup()
 
-    # Hide the turtle and exit on click
-    t.hideturtle()
-    turtle.exitonclick()
+    # add the axis labels
+    label_turtle.goto(-0.5, -4)
+    label_turtle.write("Player", align="center", font=("Arial", 12, "bold"))
+    label_turtle.goto(k/2-0.5, -6)
+    label_turtle.write("Goals Scored", align="center", font=("Arial", 12, "bold"))
 
-    try:
-        turtle.update()
-    except turtle.Terminator:
-        pass
+    # hide the turtles and exit the window
+    bar_turtle.hideturtle()
+    label_turtle.hideturtle()
+    turtle.done()
 
-
-# plots the counts of goals scored by the top k players of a given country, where k is a number between 1 and 5.
-# For example if you pass 3, the plot includes the top 3 scorers
-def plot_top_k_scorer_country(soccer_data, country, k):
-    print('plot_top_k_scorer_country: ')
-
-    # your code goes here
-
-
-# Plots the total number of goals per country.
 def plot_goals_per_country(soccer_data):
     print('plot_goals_per_country: ')
 
